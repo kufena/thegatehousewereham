@@ -28,6 +28,16 @@ namespace thegatehousewereham.Controllers
             return View();
         }
 
+        public IActionResult Pottery()
+        {
+            return View();
+        }
+
+        public IActionResult SoftwareDevelopment()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

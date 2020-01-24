@@ -15,20 +15,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "thegatehousewereham": {
-      "commandName": "Executable",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
-      },
-      "applicationUrl": "https://thegatehousewereham.com:443/;http://thegatehousewereham.com:80/"
-    },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "publishAllPorts": true,
-      "useSSL": true
+      "httpPort": 8080,
+      "useSSL": false
     },
     "localhost": {
       "commandName": "Project",
