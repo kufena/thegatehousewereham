@@ -1,0 +1,35 @@
+﻿
+CREATE TABLE Potters (
+  Id Int PRIMARY KEY NOT NULL Auto_Increment,
+  Name VarChar(240) NOT NULL,
+  Location VarChar(240) NOT NULL,
+  Description VarChar(2048)
+  );
+
+CREATE TABLE Pots (
+  Id Int PRIMARy KEY NOT NULL AUTO_INCREMENT,
+  Name VarChar(240) NOT NULL,
+  Description VarChar(2048) NOT NULL,
+  Potter Int NOT NULL,
+  Status ENUM ('void','available','sold') NOT NULL Default 'void'
+);
+
+CREATE TABLE PotImages (
+  Id Int PRIMARy KEY NOT NULL AUTO_INCREMENT,
+  File VarChar(1024) NOT NULL,
+  Size_x INT,
+  Size_y INT,
+  PotId Int,
+  Type ENUM ('main','thumb','standard','mainthumb') NOT NULL Default 'standard'
+);
+
+CREATE TABLE PotterImages (
+  Id Int PRIMARy KEY NOT NULL AUTO_INCREMENT,
+  File VarChar(1024) NOT NULL,
+  Size_x INT,
+  Size_y INT,
+  PotterId Int,
+  Type ENUM ('main','thumb','standard','mainthumb') NOT NULL Default 'standard'
+);
+
+insert into Potters (Name,Location,Description) Values ("Andrew Douglas","Norfolk, United Kingdom", "A Norfolk potter who makes wood fired and soda fired stoneware pots.");
