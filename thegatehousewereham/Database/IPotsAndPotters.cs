@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace thegatehousewereham.Database
 {
-    interface IPotsAndPotters
+    public interface IPotsAndPotters
     {
+        List<Pot> getAllAndyPotsAvailable();
+        (List<Pot>, Dictionary<int, string>) getAllAndyPotsAvailableWithMainImage();
     }
 }

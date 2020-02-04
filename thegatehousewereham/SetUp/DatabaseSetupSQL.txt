@@ -33,3 +33,10 @@ CREATE TABLE PotterImages (
 );
 
 insert into Potters (Name,Location,Description) Values ("Andrew Douglas","Norfolk, United Kingdom", "A Norfolk potter who makes wood fired and soda fired stoneware pots.");
+insert into Pots (Potter,Name,Description,Status) Values (1,"Mug, celadon glaze","A mug, soda fired with a drippy green celadon glaze",'available');
+insert into Pots (Potter,Name,Description,Status) Values (1,"Mug, no glaze","A mug, soda fired with no glaze - just a pure soda-fired surface",'available');
+
+SELECT Pots.Id as id, Pots.Potter as potter, Pots.Name as name, Pots.Description as description, Pots.Status as status FROM Pots WHERE Pots.Potter = 1 AND Pots.Status = 'available';
+
+SELECT Pots.Id as id, Pots.Potter as potter, Pots.Name as name, Pots.Description as description, Pots.Status as status, PotImages.File 
+FROM Pots LEFT JOIN PotImages ON (PotImages.PotId = Pots.Id AND PotImages.Type = 'main') WHERE Pots.Potter = 1 AND Pots.Status = 'available';

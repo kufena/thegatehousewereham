@@ -1,7 +1,69 @@
-﻿
+﻿@using thegatehousewereham.Database;
+
 @{
     ViewData["Title"] = "Shop";
+    var pots = ((List<((Pot,string),(Pot,string))>)ViewData["pots"]);
 }
 
 <h1>Shop</h1>
+<p>At the moment, this is just a display of pots.  In the future it will become a shop front, selling wares with payment via PayPal.</p>
+<p>
+    <div class="container">
 
+        @foreach (var popair in pots)
+        {
+            (var pot1, var img1) = popair.Item1;
+            (var pot2, var img2) = popair.Item2;
+            <div class="row">
+            <div class="col-sm-6">
+                <ul>
+                    <li>
+
+                        @if (img1 == null)
+                        {
+                            <img src="/img/null.jpg" height="200" width="200" />
+                        }
+                        else
+                        {
+                            <img file="@img1" height="200" width="200" />
+                        }
+                    </li>
+                    <li>
+                        @pot1.Name
+                    </li>
+                    <li>
+                        @pot1.Description
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-6">
+                @if (pot2 != null)
+                {
+                <ul>
+                    <li>
+
+                        @if (pot2 == null || img2 == null)
+                        {
+                            <img src="/img/null.jpg" height="200" width="200" />
+                        }
+                        else
+                        {
+                            <img file="@img2" height="200" width="200" />
+                        }
+                    </li>
+                    <li>
+                        @(pot2 != null ? pot2.Name : "")
+                    </li>
+                    <li>
+                        @(pot2 != null ? pot2.Description : "")
+                    </li>
+                </ul>
+                }
+            </div>
+        </div>
+
+        }
+           
+    </div>
+</p>
