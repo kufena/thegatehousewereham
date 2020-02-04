@@ -63,8 +63,10 @@ namespace thegatehousewereham.Controllers
 
         public IActionResult PotPage(int id)
         {
+            var pot = backEnd.getPotById(id);
             var v = View();
             v.ViewData["id"] = id;
+            v.ViewData["pot"] = pot;
             return v;
         }
     }

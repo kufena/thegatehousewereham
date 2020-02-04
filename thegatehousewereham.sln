@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "thegatehousewereham", "thegatehousewereham\thegatehousewereham.csproj", "{5D901FCF-3C6B-48C9-82D2-8F885D7CE0D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "databasetests", "databasetests\databasetests.csproj", "{FC2280B8-DFC5-407A-BC71-484C68CBD2F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "databasetests", "databasetests\databasetests.csproj", "{FC2280B8-DFC5-407A-BC71-484C68CBD2F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{695ABA8E-79BD-48C3-8A88-829354B60B7C}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

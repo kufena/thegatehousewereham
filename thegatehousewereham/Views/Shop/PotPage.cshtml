@@ -1,7 +1,16 @@
-﻿
+﻿@using thegatehousewereham.Database;
+
 @{
-    ViewData["Title"] = "PotPage";
+    var pot = (Pot)ViewData["pot"];
+    ViewData["Title"] = pot == null ? "PotPage" : pot.Name;
+
 }
 
-<h1>PotPage</h1>
+@if (pot != null)
+{
+    <h1>@pot.Name</h1>
+
+    <p>@pot.Description</p>
+}
+
 
