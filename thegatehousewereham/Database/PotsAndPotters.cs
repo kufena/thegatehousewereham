@@ -28,5 +28,11 @@ namespace thegatehousewereham.Database
             GetPots gp = new GetPots(conn);
             return gp.getAvailableAndyPotsWithImage();
         }
+        
+        public Pot getPotById(int id)
+        {
+            MySqlConnection conn = new MySqlConnection(connString);
+            return (new GetPot(conn)).getPotById(id);
+        }
     }
 }

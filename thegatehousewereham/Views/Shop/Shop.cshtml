@@ -29,7 +29,9 @@
                         }
                     </li>
                     <li>
-                        @pot1.Name
+                        <a href="/Shop/PotPage?Id=@pot1.Id">
+                            @pot1.Name
+                        </a>
                     </li>
                     <li>
                         @pot1.Description
@@ -53,7 +55,9 @@
                         }
                     </li>
                     <li>
+                        <a href="/Shop/PotPage?Id=@pot2.Id">
                         @(pot2 != null ? pot2.Name : "")
+                        </a>
                     </li>
                     <li>
                         @(pot2 != null ? pot2.Description : "")

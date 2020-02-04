@@ -9,5 +9,7 @@ namespace thegatehousewereham.Database
     {
         List<Pot> getAllAndyPotsAvailable();
         (List<Pot>, Dictionary<int, string>) getAllAndyPotsAvailableWithMainImage();
+
+        Pot getPotById(int id);
     }
 }

@@ -60,5 +60,12 @@ namespace thegatehousewereham.Controllers
             v.ViewData["pots"] = viewList;
             return v;
         }
+
+        public IActionResult PotPage(int id)
+        {
+            var v = View();
+            v.ViewData["id"] = id;
+            return v;
+        }
     }
 }
