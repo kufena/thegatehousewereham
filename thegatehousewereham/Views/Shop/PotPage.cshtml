@@ -1,7 +1,7 @@
-﻿@using thegatehousewereham.Database;
+﻿@using thegatehousewereham.Models;
 
 @{
-    var pot = (Pot)ViewData["pot"];
+    var pot = (Pots)ViewData["pot"];
     ViewData["Title"] = pot == null ? "PotPage" : pot.Name;
 
 }

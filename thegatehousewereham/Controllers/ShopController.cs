@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using thegatehousewereham.Database;
+using thegatehousewereham.Models;
 
 namespace thegatehousewereham.Controllers
 {
@@ -11,9 +12,9 @@ namespace thegatehousewereham.Controllers
     {
         IPotsAndPotters backEnd;
 
-        public ShopController(IPotsAndPotters pandp)
+        public ShopController(PotterShopContext context)
         {
-            this.backEnd = pandp;
+            this.backEnd = new PotsAndPotters(context);
         }
 
         public IActionResult Shop()
@@ -22,7 +23,7 @@ namespace thegatehousewereham.Controllers
             var (allPots, images) = backEnd.getAllAndyPotsAvailableWithMainImage();
 
             // zip the pots and images togethers - could have done this above.
-            var zip = new Dictionary<int, (Pot, string)>();
+            var zip = new Dictionary<int, (Pots, string)>();
             foreach(var pot in allPots)
             {
                 string img = null;
@@ -35,8 +36,8 @@ namespace thegatehousewereham.Controllers
             // I still don't think this is the right place for this, but I couldn't get
             // the code to work in the cshtml file.
             // Actually, all of this could become a code block in the cshtml, if we wished.
-            List<((Pot, string), (Pot, string))> viewList = new List<((Pot, string), (Pot, string))>();
-            (Pot, string) spare = (null,"");
+            List<((Pots, string), (Pots, string))> viewList = new List<((Pots, string), (Pots, string))>();
+            (Pots, string) spare = (null,"");
             int i = 0;
             foreach(var pair in zip)
             {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace thegatehousewereham.Database
+namespace thegatehousewereham.Models
 {
-    public class Potter
+    public class Potters
     {
     }
 }

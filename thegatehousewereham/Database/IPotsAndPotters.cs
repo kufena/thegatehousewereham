@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using thegatehousewereham.Models;
 
 namespace thegatehousewereham.Database
 {
     public interface IPotsAndPotters
     {
-        List<Pot> getAllAndyPotsAvailable();
-        (List<Pot>, Dictionary<int, string>) getAllAndyPotsAvailableWithMainImage();
+        List<Pots> getAllAndyPotsAvailable();
+        (List<Pots>, Dictionary<int, string>) getAllAndyPotsAvailableWithMainImage();
 
-        Pot getPotById(int id);
+        Pots getPotById(int id);
     }
 }

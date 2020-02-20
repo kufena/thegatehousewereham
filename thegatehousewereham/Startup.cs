@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using thegatehousewereham.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace thegatehousewereham
 {
@@ -25,9 +26,9 @@ namespace thegatehousewereham
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            string configuration_string = Configuration.GetConnectionString("DefaultConnection");
-            services.AddSingleton<IPotsAndPotters>(new PotsAndPotters(configuration_string));
+            services.AddDbContext<PotterShopContext>(options => options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+            
+            //services.AddSingleton<IPotsAndPotters>(new PotsAndPotters(configuration_string));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

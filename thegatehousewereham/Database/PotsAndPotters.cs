@@ -2,37 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
+using thegatehousewereham.Models;
 
 namespace thegatehousewereham.Database
 {
     public class PotsAndPotters : IPotsAndPotters
     {
-        private readonly string connString;
-
-        public PotsAndPotters(string connString)
+        //private readonly string connString;
+        PotterShopContext context;
+        public PotsAndPotters(PotterShopContext context)
         {
-            this.connString = connString;
+            this.context = context; // connString = connString;
         }
 
-        public List<Pot> getAllAndyPotsAvailable()
+        public List<Pots> getAllAndyPotsAvailable()
         {
-            MySqlConnection conn = new MySqlConnection(connString);
-            GetPots gp = new GetPots(conn);
+            //MySqlConnection conn = new MySqlConnection(connString);
+            GetPots gp = new GetPots(context);
             return gp.getAvailableAndyPots();
         }
 
-        public (List<Pot>, Dictionary<int, string>) getAllAndyPotsAvailableWithMainImage()
+        public (List<Pots>, Dictionary<int, string>) getAllAndyPotsAvailableWithMainImage()
         {
-            MySqlConnection conn = new MySqlConnection(connString);
-            GetPots gp = new GetPots(conn);
+            GetPots gp = new GetPots(context);
             return gp.getAvailableAndyPotsWithImage();
         }
         
-        public Pot getPotById(int id)
+        public Pots getPotById(int id)
         {
-            MySqlConnection conn = new MySqlConnection(connString);
-            return (new GetPot(conn)).getPotById(id);
+            return (new GetPot(context)).getPotById(id);
         }
     }
 }

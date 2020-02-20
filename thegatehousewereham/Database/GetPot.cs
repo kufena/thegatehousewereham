@@ -3,47 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using thegatehousewereham.Models;
 
 namespace thegatehousewereham.Database
 {
     public class GetPot
     {
-        private readonly string connString;
+        PotterShopContext context;
 
-        private MySqlConnection conn { get; set; }
-
-        public GetPot(MySqlConnection connection)
+        public GetPot(PotterShopContext context)
         {
-            conn = connection;
+            this.context = context;
         }
 
-        public Pot getPotById(int id)
+        public Pots getPotById(int id)
         {
-            try
-            {
-                conn.Open();
-                MySqlCommand command = new MySqlCommand("SELECT Pots.Potter as potter, Pots.Name as name, Pots.Description as description, Pots.Status as status " +
-                                                        "FROM Pots " +
-                                                        "WHERE Pots.Id=" + id, conn);
-                using (MySqlDataReader reader = command.ExecuteReader())
-                {
-                    Pot p = null;
-                    while (reader.Read())
-                    {
-                        p = new Pot(id,
-                            1,
-                            reader.GetString("name"),
-                            reader.GetString("description"),
-                            reader.GetString("status"));
-                        break;
-                    }
-                    return p;
-                }
-            }
-            finally
-            {
-                conn.Close();
-            }
+            var pots = from pot in context.Pots where pot.Id == id select pot;
+            return pots.FirstOrDefault();
         }
     }
 }

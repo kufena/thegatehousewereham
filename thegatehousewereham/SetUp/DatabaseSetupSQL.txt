@@ -19,7 +19,7 @@ CREATE TABLE PotImages (
   File VarChar(1024) NOT NULL,
   Size_x INT,
   Size_y INT,
-  PotId Int,
+  PotsId Int NOT NULL,
   Type ENUM ('main','thumb','standard','mainthumb') NOT NULL Default 'standard'
 );
 
@@ -28,7 +28,7 @@ CREATE TABLE PotterImages (
   File VarChar(1024) NOT NULL,
   Size_x INT,
   Size_y INT,
-  PotterId Int,
+  PottersId Int NOT NULL,
   Type ENUM ('main','thumb','standard','mainthumb') NOT NULL Default 'standard'
 );
 
