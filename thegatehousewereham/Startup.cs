@@ -26,8 +26,13 @@ namespace thegatehousewereham
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<PotterShopContext>(options => options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
-            
+            services.AddDbContext<PotterShopContext>(options => options.UseMySql(Configuration["ConnectionStrings:PotterShopConnection"]));
+            services.AddDbContext<BasketContext>(options => options.UseMySql(Configuration["ConnectionStrings:BasketsConnection"]));
+            services.AddSession(so =>
+            {
+                so.IdleTimeout = TimeSpan.FromMinutes(15);
+                so.Cookie.IsEssential = true;
+            });
             //services.AddSingleton<IPotsAndPotters>(new PotsAndPotters(configuration_string));
         }
 
@@ -50,7 +55,7 @@ namespace thegatehousewereham
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

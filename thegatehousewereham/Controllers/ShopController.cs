@@ -70,5 +70,12 @@ namespace thegatehousewereham.Controllers
             v.ViewData["pot"] = pot;
             return v;
         }
+
+        public IActionResult AddToBasket(int id)
+        {
+            var sessionId = this.HttpContext.Session.Id;
+            
+            return View("PotPage");
+        }
     }
 }

@@ -10,7 +10,7 @@ CREATE TABLE Pots (
   Id Int PRIMARy KEY NOT NULL AUTO_INCREMENT,
   Name VarChar(240) NOT NULL,
   Description VarChar(2048) NOT NULL,
-  Potter Int NOT NULL,
+  PotterId Int NOT NULL,
   Status ENUM ('void','available','sold') NOT NULL Default 'void'
 );
 
@@ -40,3 +40,11 @@ SELECT Pots.Id as id, Pots.Potter as potter, Pots.Name as name, Pots.Description
 
 SELECT Pots.Id as id, Pots.Potter as potter, Pots.Name as name, Pots.Description as description, Pots.Status as status, PotImages.File 
 FROM Pots LEFT JOIN PotImages ON (PotImages.PotId = Pots.Id AND PotImages.Type = 'main') WHERE Pots.Potter = 1 AND Pots.Status = 'available';
+
+drop table Baskets;
+drop table BasketPots;
+create table Baskets (Id int not null primary key, Touched DateTime not null default NOW());
+create index BasketPotsIndex on BasketPots (BasketId);
+create table BasketPots (Id int not null primary key auto_increment, BasketId int not null, Potid int not null);
+
+docker run --name mysqlpottershop  --env="MYSQL_ALLOW_EMPTY_PASSWORD=yes" -v e:\mysqlpottershop\:/var/lib/mysql -p 33066:3306 -d mysql

@@ -6,20 +6,42 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using thegatehousewereham.Models;
+using Microsoft.AspNetCore.Session;
+using System.Text;
+using thegatehousewereham.Baskets;
+using thegatehousewereham.Database;
 
 namespace thegatehousewereham.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        BasketContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, BasketContext basketContext)
         {
             _logger = logger;
+            context = basketContext;
         }
 
         public IActionResult Index()
         {
+            int basketid;
+            if (this.HttpContext.Session.Keys.Contains<string>("basketid"))
+            {
+                byte[] bytes;
+
+                this.HttpContext.Session.TryGetValue("basketid", out bytes);
+                basketid = BitConverter.ToInt32(bytes, 0);
+            }
+            else
+            {
+                BasketManager bm = new BasketManager();
+                basketid = bm.createBasketId(context);
+                var bytes = BitConverter.GetBytes(basketid);
+                this.HttpContext.Session.Set("basketid", bytes);
+            }
+
             return View();
         }
 

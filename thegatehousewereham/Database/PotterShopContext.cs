@@ -10,18 +10,10 @@ namespace thegatehousewereham.Database
 {
     public class PotterShopContext : DbContext
     {
-
-        public PotterShopContext([NotNullAttribute] DbContextOptions options) : base(options)
-        {}
-
-        public PotterShopContext()
-        {}
+        public PotterShopContext(DbContextOptions<PotterShopContext> options) : base(options)
+        { }
 
         public DbSet<Pots> Pots { get; set; }
         public DbSet<PotImages> PotImages { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-        }
     }
 }

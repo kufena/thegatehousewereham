@@ -29,13 +29,12 @@
                         }
                     </li>
                     <li>
-                        <a href="/Shop/PotPage?Id=@pot1.Id">
-                            @pot1.Name
-                        </a>
+                        @pot1.Name
                     </li>
                     <li>
                         @pot1.Description
                     </li>
+                    <li><span><a asp-controller="Shop" asp-action="PotPage" asp-route-id="@pot1.Id">Details</a> <a asp-controller="Shop" asp-action="PotPage" asp-route-id="@pot1.Id">Add to Basket</a></span></li>
                 </ul>
             </div>
 
