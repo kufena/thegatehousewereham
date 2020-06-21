@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using thegatehousewereham.Database;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace thegatehousewereham
 {
@@ -32,6 +33,15 @@ namespace thegatehousewereham
             {
                 so.IdleTimeout = TimeSpan.FromMinutes(15);
                 so.Cookie.IsEssential = true;
+            });
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
+                options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
             //services.AddSingleton<IPotsAndPotters>(new PotsAndPotters(configuration_string));
         }
@@ -56,6 +66,7 @@ namespace thegatehousewereham
 
             app.UseAuthorization();
             app.UseSession();
+            app.UseCookiePolicy();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
