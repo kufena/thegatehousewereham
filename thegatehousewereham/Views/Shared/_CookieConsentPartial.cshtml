@@ -28,7 +28,7 @@
                 </p>
                 <div class="navbar-right">
                     <a asp-page="/Home/Privacy" class="btn btn-info navbar-btn">Learn More</a>
-                    <button type="button" onclick="" class="btn btn-default navbar-btn" data-cookie-string="@cookieString">Accept</button>
+                    <button type="button" onclick="myFunction();" class="btn btn-default navbar-btn" data-cookie-string="@cookieString">Accept</button>
                 </div>
             </div>
         </div>
@@ -40,5 +40,10 @@
                 document.querySelector("#cookieConsent").classList.add("hidden");
             }, false);
         })();
+
+        function myFunction() {
+            var x = document.getElementById("cookieConsent");
+            x.hidden = "true";
+        }
     </script>
 }

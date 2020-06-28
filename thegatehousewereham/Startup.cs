@@ -41,7 +41,7 @@ namespace thegatehousewereham
                 // cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 // requires using Microsoft.AspNetCore.Http;
-                options.MinimumSameSitePolicy = SameSiteMode.Strict;
+                options.MinimumSameSitePolicy = SameSiteMode.Lax;
             });
             //services.AddSingleton<IPotsAndPotters>(new PotsAndPotters(configuration_string));
         }
