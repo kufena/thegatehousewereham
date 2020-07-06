@@ -59,13 +59,17 @@ namespace thegatehousewereham
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            // Useful intervention if required, in the middleware stack.
+            /*
             app.Use(async (context, next) =>
             {
-                Console.Out.WriteLine("WEEEEELLLLLLLLLLLL HHHHHHEEEEEEEEEEEERRRRRRRRRRRRRRREEEEEEEEEEEEE WWWWWWWEEEEEEEEEEEEE AAAAAAAAAAAARRRRRRRRREEEEEEE!!!!!!!!!");
+                Console.Out.WriteLine("Here.");
                 // Do work that doesn't write to the Response.
                 await next.Invoke();
                 // Do logging or other work that doesn't write to the Response.
             });
+            */
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
