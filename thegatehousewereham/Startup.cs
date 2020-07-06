@@ -41,7 +41,7 @@ namespace thegatehousewereham
                 // cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 // requires using Microsoft.AspNetCore.Http;
-                options.MinimumSameSitePolicy = SameSiteMode.Lax;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             //services.AddSingleton<IPotsAndPotters>(new PotsAndPotters(configuration_string));
         }
@@ -59,6 +59,14 @@ namespace thegatehousewereham
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.Use(async (context, next) =>
+            {
+                Console.Out.WriteLine("WEEEEELLLLLLLLLLLL HHHHHHEEEEEEEEEEEERRRRRRRRRRRRRRREEEEEEEEEEEEE WWWWWWWEEEEEEEEEEEEE AAAAAAAAAAAARRRRRRRRREEEEEEE!!!!!!!!!");
+                // Do work that doesn't write to the Response.
+                await next.Invoke();
+                // Do logging or other work that doesn't write to the Response.
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

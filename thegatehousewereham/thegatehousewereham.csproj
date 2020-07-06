@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>26ad767e-2faf-4b29-9bf4-57aaa5292dc9</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerDebugeeArguments>-a -v</DockerDebugeeArguments>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 

@@ -19,9 +19,15 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Docker",
+        "Kestrel__Certificates__Default__Path": "/app/certs/certificate.pfx",
+        "Kestrel__Certificates__Default__Password": "Password"
+      },
+      "commandLineArgs": "-v AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "publishAllPorts": true,
       "httpPort": 8080,
-      "useSSL": false
+      "useSSL": true
     },
     "localhost": {
       "commandName": "Project",
