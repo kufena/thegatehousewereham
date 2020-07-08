@@ -18,9 +18,5 @@ RUN dotnet publish "thegatehousewereham.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-ARG default_ssl_path=/app/certs/certificate.pfx
-ARG default_ssl_password=Password
-ENV Kestrel__Certificates__Default__Path=$default_ssl_path
-ENV Kestrel__Certificates__Default__Password=$default_ssl_password
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "thegatehousewereham.dll"]

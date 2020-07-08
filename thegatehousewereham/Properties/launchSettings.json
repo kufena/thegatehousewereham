@@ -8,13 +8,6 @@
     }
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
@@ -24,7 +17,6 @@
         "Kestrel__Certificates__Default__Path": "/app/certs/certificate.pfx",
         "Kestrel__Certificates__Default__Password": "Password"
       },
-      "commandLineArgs": "-v AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "publishAllPorts": true,
       "httpPort": 8080,
       "useSSL": true
