@@ -1,4 +1,16 @@
 ﻿
+#Create users and tables and privileges.
+
+create database basketsdb;
+create database pottershop;
+
+create user 'pottershopdb'@'%' authenticated by '**********';
+
+grant all privileges on basketsdb.* to 'pottershopdb'@'%';
+grant all privileges on pottershopdb.* to 'pottershopdb'@'%';
+
+#Create tables in potter shop db
+
 CREATE TABLE Potters (
   Id Int PRIMARY KEY NOT NULL Auto_Increment,
   Name VarChar(240) NOT NULL,
@@ -41,10 +53,29 @@ SELECT Pots.Id as id, Pots.Potter as potter, Pots.Name as name, Pots.Description
 SELECT Pots.Id as id, Pots.Potter as potter, Pots.Name as name, Pots.Description as description, Pots.Status as status, PotImages.File 
 FROM Pots LEFT JOIN PotImages ON (PotImages.PotId = Pots.Id AND PotImages.Type = 'main') WHERE Pots.Potter = 1 AND Pots.Status = 'available';
 
+# Create tables for the baskets db
+
 drop table Baskets;
 drop table BasketPots;
 create table Baskets (Id int not null primary key, Touched DateTime not null default NOW());
-create index BasketPotsIndex on BasketPots (BasketId);
 create table BasketPots (Id int not null primary key auto_increment, BasketId int not null, Potid int not null);
+create index BasketPotsIndex on BasketPots (BasketId);
+
+#Run with docker.
 
 docker run --name mysqlpottershop  --env="MYSQL_ALLOW_EMPTY_PASSWORD=yes" -v e:\mysqlpottershop\:/var/lib/mysql -p 33066:3306 -d mysql
+
+The -v means you can mount a directory external to the container so that the contents of the database are remembered between stop and start.
+The name allows you to stop/start/kill/rm it easily.
+The -p maps the 3306 port to something less likely to be hacked, but visible to other containers.
+You can set a root password using --env="MYSQL_ROOT_PASSWORD=*****" instead of the allow empty password.
+
+You can now do
+
+  docker exec -it mysqlpottershop bash
+
+to get access to the container, and run
+
+  mysql -uroot -p*******
+
+to create all the tables and so on.
