@@ -19,6 +19,7 @@
       },
       "publishAllPorts": true,
       "httpPort": 8080,
+      "httpsPort": 443,
       "useSSL": true
     },
     "localhost": {
