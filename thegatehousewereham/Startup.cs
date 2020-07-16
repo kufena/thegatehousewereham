@@ -75,7 +75,7 @@ namespace thegatehousewereham
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            
             app.UseAuthorization();
             app.UseSession();
             app.UseCookiePolicy();

@@ -8,3 +8,15 @@ The twitter, instagram and github logos are from feathericons.com - open source 
 
     ENV Kestrel__Certificates__Default__Path=/app/certs/certificate.pfx
     ENV Kestrel__Certificates__Default__Password=Password
+
+
+I now run inside a network like so:
+
+    docker run -v /root/certs:/app/Resources/certs -e "Kestrel__Certificates__Default__Path=/app/Resources/certs/certificate.pfx" -e "Kestrel__Certificates__Default__Password=Password" --network thegatehousewereham -p 8000:80 -p 44300:443 -d --name bill potterboy1967/thegatehousewereham
+
+Need to create the network - and connect any already started containers:
+
+    docker network create thegatehousewereham
+    docker network connect thegatehousewereham mysqlpottershop
+
+Use the ubuntu image to create a bash shell - use the --network flag and you can interogate other containers using their names.

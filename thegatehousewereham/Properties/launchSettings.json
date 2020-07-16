@@ -18,8 +18,6 @@
         "Kestrel__Certificates__Default__Password": "Password"
       },
       "publishAllPorts": true,
-      "httpPort": 8080,
-      "httpsPort": 443,
       "useSSL": true
     },
     "localhost": {
