@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using thegatehousewereham.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using thegatehousewereham.DevClasses;
 
 namespace thegatehousewereham
 {
@@ -49,16 +50,17 @@ namespace thegatehousewereham
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //if (env.IsDevelopment())
-            //{
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
+                app.UseMiddleware<FlakeyDevMiddleware>();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             //    app.UseHsts();
-            //}
+            }
 
             // Useful intervention if required, in the middleware stack.
             /*

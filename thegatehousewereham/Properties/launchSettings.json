@@ -13,7 +13,7 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Docker",
+        "ASPNETCORE_ENVIRONMENT": "Development",
         "Kestrel__Certificates__Default__Path": "/app/certs/certificate.pfx",
         "Kestrel__Certificates__Default__Password": "Password"
       },
