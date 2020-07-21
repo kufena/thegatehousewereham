@@ -53,7 +53,7 @@ namespace thegatehousewereham
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMiddleware<FlakeyDevMiddleware>();
+                //app.UseMiddleware<FlakeyDevMiddleware>();
             }
             else
             {
