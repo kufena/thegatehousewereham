@@ -1,6 +1,22 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.container {
+    border-bottom-style: solid;
+    border-color: red;
+    border-width: 2px;
+}
+
+ul.navigation-list {
+    list-style-type: none;
+}
+
+li.navigation-item {
+    float: right;
+    border-width: 10px;
+    padding-left: 10px;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
