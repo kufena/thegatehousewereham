@@ -24,7 +24,7 @@ namespace thegatehousewereham.Controllers
             context = basketContext;
         }
 
-        public IActionResult Index()
+        private int extractBasketId()
         {
             int basketid;
             if (this.HttpContext.Session.Keys.Contains<string>("basketid"))
@@ -41,22 +41,38 @@ namespace thegatehousewereham.Controllers
                 var bytes = BitConverter.GetBytes(basketid);
                 this.HttpContext.Session.Set("basketid", bytes);
             }
+            return basketid;
+        }
+
+        public IActionResult Index()
+        {
+            int basketid = extractBasketId();
 
             return View();
         }
 
+
         public IActionResult Privacy()
         {
+            int basketid = extractBasketId();
             return View();
         }
 
         public IActionResult Pottery()
         {
+            int basketid = extractBasketId();
             return View();
         }
 
         public IActionResult SoftwareDevelopment()
         {
+            int basketid = extractBasketId();
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            int basketid = extractBasketId();
             return View();
         }
 
